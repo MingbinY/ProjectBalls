@@ -15,14 +15,14 @@ public class PlayerController : MonoBehaviour
     public Vector3 movementVector;
     public int winScore = 30;
 
-    public Player inputActions;
-    float numberInput;
-    bool numInputPerformed;
-
     private Transform cameraTransform;
     public float rotationSpeed = 5f;
 
     public bool jumpInput;
+    public bool buildTurretInput;
+    public Player inputActions;
+    float numberInput;
+    bool numInputPerformed;
 
     void Awake()
     {
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         }
 
         inputActions.Action.SwitchTurrent.performed += i => numberInput = i.ReadValue<float>();
+        inputActions.Action.BuildTurrent.performed += i => buildTurretInput =true;
         inputActions.Enable();
     }
 
@@ -56,6 +57,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void HandleBuildTurretInput()
+    {
+        if (buildTurretInput)
+        {
+            Debug.Log("Build");
+            buildTurretInput = false;
+        }
+            
+    }
+
     void Jump()
     {
         rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
@@ -64,7 +75,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         //HandleJump();
-        HandleSwitchTurrent();
+        HandleSwitchTurretInput();
+        HandleBuildTurretInput();
     }
     private void FixedUpdate()
     {
@@ -79,7 +91,7 @@ public class PlayerController : MonoBehaviour
         FindObjectOfType<InGameMenu>().Win();
     }
 
-    void HandleSwitchTurrent()
+    void HandleSwitchTurretInput()
     {
         inputActions.Action.SwitchTurrent.performed += i => numInputPerformed = true;
         if (numInputPerformed)

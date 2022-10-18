@@ -202,6 +202,15 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BuildTurrent"",
+                    ""type"": ""Button"",
+                    ""id"": ""15fba8d6-653c-4713-aad0-0a14ed8be3a6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""action"": ""SwitchTurrent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21062163-78b6-4e9b-818a-dac5e5ec9fe1"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BuildTurrent"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -351,6 +371,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
         m_Action_NextGun = m_Action.FindAction("NextGun", throwIfNotFound: true);
         m_Action_PrevGun = m_Action.FindAction("PrevGun", throwIfNotFound: true);
         m_Action_SwitchTurrent = m_Action.FindAction("SwitchTurrent", throwIfNotFound: true);
+        m_Action_BuildTurrent = m_Action.FindAction("BuildTurrent", throwIfNotFound: true);
         // Look
         m_Look = asset.FindActionMap("Look", throwIfNotFound: true);
         m_Look_CameraLook = m_Look.FindAction("CameraLook", throwIfNotFound: true);
@@ -499,6 +520,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
     private readonly InputAction m_Action_NextGun;
     private readonly InputAction m_Action_PrevGun;
     private readonly InputAction m_Action_SwitchTurrent;
+    private readonly InputAction m_Action_BuildTurrent;
     public struct ActionActions
     {
         private @Player m_Wrapper;
@@ -507,6 +529,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
         public InputAction @NextGun => m_Wrapper.m_Action_NextGun;
         public InputAction @PrevGun => m_Wrapper.m_Action_PrevGun;
         public InputAction @SwitchTurrent => m_Wrapper.m_Action_SwitchTurrent;
+        public InputAction @BuildTurrent => m_Wrapper.m_Action_BuildTurrent;
         public InputActionMap Get() { return m_Wrapper.m_Action; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -528,6 +551,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @SwitchTurrent.started -= m_Wrapper.m_ActionActionsCallbackInterface.OnSwitchTurrent;
                 @SwitchTurrent.performed -= m_Wrapper.m_ActionActionsCallbackInterface.OnSwitchTurrent;
                 @SwitchTurrent.canceled -= m_Wrapper.m_ActionActionsCallbackInterface.OnSwitchTurrent;
+                @BuildTurrent.started -= m_Wrapper.m_ActionActionsCallbackInterface.OnBuildTurrent;
+                @BuildTurrent.performed -= m_Wrapper.m_ActionActionsCallbackInterface.OnBuildTurrent;
+                @BuildTurrent.canceled -= m_Wrapper.m_ActionActionsCallbackInterface.OnBuildTurrent;
             }
             m_Wrapper.m_ActionActionsCallbackInterface = instance;
             if (instance != null)
@@ -544,6 +570,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @SwitchTurrent.started += instance.OnSwitchTurrent;
                 @SwitchTurrent.performed += instance.OnSwitchTurrent;
                 @SwitchTurrent.canceled += instance.OnSwitchTurrent;
+                @BuildTurrent.started += instance.OnBuildTurrent;
+                @BuildTurrent.performed += instance.OnBuildTurrent;
+                @BuildTurrent.canceled += instance.OnBuildTurrent;
             }
         }
     }
@@ -597,6 +626,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
         void OnNextGun(InputAction.CallbackContext context);
         void OnPrevGun(InputAction.CallbackContext context);
         void OnSwitchTurrent(InputAction.CallbackContext context);
+        void OnBuildTurrent(InputAction.CallbackContext context);
     }
     public interface ILookActions
     {

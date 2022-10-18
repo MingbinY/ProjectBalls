@@ -180,6 +180,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "BuildTurrent",
+                    "type": "Button",
+                    "id": "15fba8d6-653c-4713-aad0-0a14ed8be3a6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -268,6 +277,17 @@
                     "processors": "Scale(factor=5)",
                     "groups": "",
                     "action": "SwitchTurrent",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21062163-78b6-4e9b-818a-dac5e5ec9fe1",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BuildTurrent",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

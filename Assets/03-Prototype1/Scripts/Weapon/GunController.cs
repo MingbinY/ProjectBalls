@@ -42,6 +42,7 @@ public class GunController : MonoBehaviour
     {
         ammoHint.text = equippedGun.bulletInMag + " / " + equippedGun.bulletPerMag;
         reloadingHint.SetActive(equippedGun.reloading);
+        ammoHint.gameObject.SetActive(!equippedGun.reloading);
         HandleShoot();
         HandleChangeWeapon();
     }
