@@ -4185,6 +4185,7 @@ MonoBehaviour:
   winScore: 30
   rotationSpeed: 5
   jumpInput: 0
+  buildTurretInput: 0
 --- !u!1 &647878625
 GameObject:
   m_ObjectHideFlags: 0
@@ -8040,7 +8041,7 @@ PrefabInstance:
     - target: {fileID: 4072494036405501560, guid: 1d99004aacd367e45a8494c4a5c80d43,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.17
+      value: 6.18
       objectReference: {fileID: 0}
     - target: {fileID: 4072494036405501560, guid: 1d99004aacd367e45a8494c4a5c80d43,
         type: 3}
@@ -8050,27 +8051,27 @@ PrefabInstance:
     - target: {fileID: 4072494036405501560, guid: 1d99004aacd367e45a8494c4a5c80d43,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.07
+      value: -2.16
       objectReference: {fileID: 0}
     - target: {fileID: 4072494036405501560, guid: 1d99004aacd367e45a8494c4a5c80d43,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.79755384
       objectReference: {fileID: 0}
     - target: {fileID: 4072494036405501560, guid: 1d99004aacd367e45a8494c4a5c80d43,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4072494036405501560, guid: 1d99004aacd367e45a8494c4a5c80d43,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.6032478
       objectReference: {fileID: 0}
     - target: {fileID: 4072494036405501560, guid: 1d99004aacd367e45a8494c4a5c80d43,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4072494036405501560, guid: 1d99004aacd367e45a8494c4a5c80d43,
         type: 3}
@@ -8080,7 +8081,7 @@ PrefabInstance:
     - target: {fileID: 4072494036405501560, guid: 1d99004aacd367e45a8494c4a5c80d43,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 285.794
       objectReference: {fileID: 0}
     - target: {fileID: 4072494036405501560, guid: 1d99004aacd367e45a8494c4a5c80d43,
         type: 3}
@@ -8135,9 +8136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c56673035773e46bf70cb9f1d65bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 1
+  config: {fileID: 11400000, guid: 69eeff9eca9e8ab49aa3c324b5d9f9e2, type: 2}
+  state: 0
+  initState: 0
+  weapon: {fileID: 1639685751}
 --- !u!1 &1241236379
 GameObject:
   m_ObjectHideFlags: 0
@@ -9989,6 +9991,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637552445}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1639685751 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5023767877069036724, guid: 1d99004aacd367e45a8494c4a5c80d43,
+    type: 3}
+  m_PrefabInstance: {fileID: 1236623522}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0ee43f49b9e914ca11c1aa4c712760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1661704307
 GameObject:
   m_ObjectHideFlags: 0
