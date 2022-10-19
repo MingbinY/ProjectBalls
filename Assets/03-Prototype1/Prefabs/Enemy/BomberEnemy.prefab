@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3300794874055164665}
   - component: {fileID: 3300794874055164668}
   - component: {fileID: 3300794874055164671}
-  - component: {fileID: 3300794874055164420}
   m_Layer: 0
   m_Name: BomberEnemy
   m_TagString: Enemy
@@ -157,30 +156,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3300794874055164420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3300794874055164423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0470570c3e258de4e9706dea3f2602b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerObj: {fileID: 0}
-  initState: 0
-  patrolPoints: []
-  viewDist: 30
-  attackDist: 3
-  moveSpeed: 3.5
-  isAttacking: 0
-  attackCooldown: 3
-  damage: 5
-  explosionRadius: 8
-  explodeDelay: 2
-  explosionVFX: {fileID: 1000012903210382, guid: 8b20af3ffd4fbda4ca0104a347b43e6b, type: 3}
 --- !u!1 &3300794874715425120
 GameObject:
   m_ObjectHideFlags: 0

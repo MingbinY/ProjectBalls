@@ -8,6 +8,8 @@ public class BuildManager : MonoBehaviour
 
     public Node selectedNode;
 
+
+
     private void Awake()
     {
         if (instance != null)
@@ -21,13 +23,29 @@ public class BuildManager : MonoBehaviour
 
     private void Start()
     {
-        turrentToBuild = standardTurrentPrefab;
+        turretToBuild = standardTurrentPrefab;
     }
 
-    public GameObject turrentToBuild;
+    public GameObject turretToBuild;
 
-    public GameObject GetTurrentToBuild()
+    public GameObject GetTurretToBuild()
     {
-        return turrentToBuild;
+        return turretToBuild;
+    }
+
+    public void ResetSelectedNode(GameObject passInNodeObject)
+    {
+        if (selectedNode.gameObject == passInNodeObject)
+        {
+            selectedNode = null;
+        }
+    }
+
+    public void BuildTurret()
+    {
+        if (selectedNode != null)
+        {
+            selectedNode.BuildTurret();
+        }
     }
 }

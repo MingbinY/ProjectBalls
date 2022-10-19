@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     AISensor sensor;
     private NavMeshAgent agent;
     public EnemyConfig config;
+    private EnemyHealthManager healthManager;
 
     public EnemyStates state;
     public EnemyStates initState;
@@ -27,6 +28,7 @@ public class EnemyAI : MonoBehaviour
     {
         sensor = GetComponent<AISensor>();
         agent = GetComponent<NavMeshAgent>();
+        healthManager = GetComponent<EnemyHealthManager>();
         state = initState;
         playerTransform = FindObjectOfType<PlayerController>().transform;
         sensor.radius = config.viewRange;
@@ -34,6 +36,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if (healthManager.isDead)
+            return;
         //State selection
         switch (state)
         {

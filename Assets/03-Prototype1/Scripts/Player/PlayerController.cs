@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
         if (buildTurretInput)
         {
             Debug.Log("Build");
+            BuildManager.instance.BuildTurret();
             buildTurretInput = false;
         }
             

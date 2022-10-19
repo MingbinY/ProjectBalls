@@ -8,7 +8,7 @@ public class Node : MonoBehaviour
     public Color originalColor;
     Renderer rend;
 
-    private GameObject turrent;
+    private GameObject turret;
 
 
     private void Start()
@@ -27,22 +27,23 @@ public class Node : MonoBehaviour
     private void OnMouseExit()
     {
         rend.material.color = originalColor;
+        BuildManager.instance.ResetSelectedNode(gameObject);
     }
     #endregion
 
-    #region on click
-    //private void OnMouseDown()
-    //{
-    //    if (turrent != null)
-    //    {
-    //        Debug.Log("This node has a turrent");
-    //    }
-    //    else
-    //    {
-    //        // can build turrent
-    //        GameObject turrentToBuild = BuildManager.instance.GetTurrentToBuild();
-    //        turrent = Instantiate(turrentToBuild, transform.position + Vector3.up * 0.5f, Quaternion.identity) as GameObject;
-    //    }
-    //}
+    #region Build
+    public void BuildTurret()
+    {
+        if (turret != null)
+        {
+            Debug.Log("This node has a turret");
+        }
+        else
+        {
+            // can build turrent
+            GameObject turrentToBuild = BuildManager.instance.GetTurretToBuild();
+            turret = Instantiate(turrentToBuild, transform.position + Vector3.up * 0.5f, Quaternion.identity) as GameObject;
+        }
+    }
     #endregion
 }

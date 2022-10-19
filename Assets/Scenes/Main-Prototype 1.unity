@@ -4314,8 +4314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedNode: {fileID: 0}
-  standardTurrentPrefab: {fileID: 0}
-  turrentToBuild: {fileID: 0}
+  standardTurrentPrefab: {fileID: 939335178, guid: 397a7d9c993d56047a935981f6d964e5,
+    type: 3}
+  turretToBuild: {fileID: 939335178, guid: 397a7d9c993d56047a935981f6d964e5, type: 3}
 --- !u!4 &648028987
 Transform:
   m_ObjectHideFlags: 0
@@ -8088,58 +8089,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4072494036405501564, guid: 1d99004aacd367e45a8494c4a5c80d43,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072494036405501564, guid: 1d99004aacd367e45a8494c4a5c80d43,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4072494036405501570, guid: 1d99004aacd367e45a8494c4a5c80d43,
         type: 3}
       propertyPath: m_Name
       value: GunnerEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4072494036405501563, guid: 1d99004aacd367e45a8494c4a5c80d43, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d99004aacd367e45a8494c4a5c80d43, type: 3}
---- !u!1 &1236623523 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4072494036405501570, guid: 1d99004aacd367e45a8494c4a5c80d43,
-    type: 3}
-  m_PrefabInstance: {fileID: 1236623522}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1236623524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1236623523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 690bff668c65d2f4481e200a4fa8c0d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 5
-  angle: 30
-  playerRef: {fileID: 0}
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 8
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 1
-  playerInSight: 0
---- !u!114 &1236623525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1236623523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22c56673035773e46bf70cb9f1d65bfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 69eeff9eca9e8ab49aa3c324b5d9f9e2, type: 2}
-  state: 0
-  initState: 0
-  weapon: {fileID: 1639685751}
 --- !u!1 &1241236379
 GameObject:
   m_ObjectHideFlags: 0
@@ -9991,18 +9957,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637552445}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1639685751 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5023767877069036724, guid: 1d99004aacd367e45a8494c4a5c80d43,
-    type: 3}
-  m_PrefabInstance: {fileID: 1236623522}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc0ee43f49b9e914ca11c1aa4c712760, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1661704307
 GameObject:
   m_ObjectHideFlags: 0
