@@ -8,8 +8,6 @@ public class BuildManager : MonoBehaviour
 
     public Node selectedNode;
 
-
-
     private void Awake()
     {
         if (instance != null)
