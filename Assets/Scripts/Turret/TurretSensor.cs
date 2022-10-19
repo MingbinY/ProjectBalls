@@ -65,6 +65,11 @@ public class TurretSensor : MonoBehaviour
 
     bool CheckLineOfSight(Transform target)
     {
+        if (Vector3.Distance(target.position, transform.position) > radius)
+        {
+            return false;
+        }
+
         bool inSight = false;
         Vector3 directionToTarget = (target.position - transform.position).normalized;
         if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)

@@ -7983,7 +7983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  angle: 120
+  angle: 30
   targetRef: {fileID: 0}
   targetMask:
     serializedVersion: 2
@@ -10007,8 +10007,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4a473993b2e5f4fa28d12242604404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   config: {fileID: 11400000, guid: 8fe52c07e95c9a14f9477fbaa21fb8fb, type: 2}
   top: {fileID: 1202639042}
+  projectile: 0
 --- !u!1 &1637552445
 GameObject:
   m_ObjectHideFlags: 0

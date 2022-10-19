@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Base_Turret_L1_Config
   m_EditorClassIdentifier: 
   attackRange: 5
+  idleRotateVector: {x: 0, y: 0.2, z: 0}
+  fireInteval: 0.5
   targetMask:
     serializedVersion: 2
     m_Bits: 64
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
   cost: 0

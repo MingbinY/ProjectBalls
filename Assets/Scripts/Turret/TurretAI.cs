@@ -8,13 +8,22 @@ public enum TurretState
     Attack
 }
 
+public enum TurretType
+{
+    projectile,
+    laser,
+    missile
+}
+
 public class TurretAI : MonoBehaviour
 {
+    public TurretType type;
     TurretSensor sensor;
     public TurretConfig config;
     TurretState state = TurretState.Idle;
     public GameObject top;
     float nextFireTime;
+    public float projectile;
 
     private void Awake()
     {
@@ -56,10 +65,11 @@ public class TurretAI : MonoBehaviour
         if (!sensor.targetInSight)
         {
             state = TurretState.Idle;
+            top.transform.Rotate(new Vector3(0, top.transform.rotation.y, 0));
             return;
         }
         //Face Target
-        top.transform.LookAt(sensor.targetRef.transform);
+        top.transform.rotation = Quaternion.LookRotation(sensor.targetRef.transform.position - top.transform.position);
         //Shoot Target
         if (Time.time > nextFireTime)
         {
