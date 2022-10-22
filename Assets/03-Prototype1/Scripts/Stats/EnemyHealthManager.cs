@@ -9,6 +9,7 @@ public class EnemyHealthManager : BasicHealthManager
     {
         base.Death();
         MoneyManager.instance.EarnMoney(moneyDrop);
-        Destroy(gameObject);
+        EnemyManager.instance.DestroyAfterDeath(gameObject);
+        gameObject.SetActive(false);
     }
 }

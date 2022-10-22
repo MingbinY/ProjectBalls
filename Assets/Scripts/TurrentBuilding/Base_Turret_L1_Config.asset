@@ -22,3 +22,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   cost: 0
+  damage: 5
+  muzzleSpeed: 40

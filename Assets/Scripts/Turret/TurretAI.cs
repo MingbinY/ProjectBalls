@@ -18,14 +18,15 @@ public enum TurretType
 public class TurretAI : MonoBehaviour
 {
     public TurretType type;
-    TurretSensor sensor;
+    public TurretSensor sensor;
     public TurretConfig config;
-    TurretState state = TurretState.Idle;
+    public TurretFireControl fireControl;
+    public TurretState state = TurretState.Idle;
     public GameObject top;
-    float nextFireTime;
-    public float projectile;
+    public float nextFireTime;
+    
 
-    private void Awake()
+    public virtual void Awake()
     {
         sensor = GetComponentInChildren<TurretSensor>();
         top = GetComponentInChildren<TurretSensor>().gameObject;
@@ -33,9 +34,10 @@ public class TurretAI : MonoBehaviour
         sensor.radius = config.attackRange;
         sensor.obstacleMask = config.obstacleMask;
         nextFireTime = Time.time;
+        fireControl = top.GetComponent<TurretFireControl>();
     }
 
-    private void Update()
+    public virtual void Update()
     {
         switch (state)
         {
@@ -48,7 +50,7 @@ public class TurretAI : MonoBehaviour
         }
     }
 
-    void IdleUpdate()
+    public virtual void IdleUpdate()
     {
         //Rotate around
         if (sensor.targetInSight)
@@ -59,22 +61,25 @@ public class TurretAI : MonoBehaviour
         top.transform.Rotate(config.idleRotateVector);
     }
 
-    void AttackUpdate()
+    public virtual void AttackUpdate()
     {
         //Check if target in sight
         if (!sensor.targetInSight)
         {
+            Quaternion targetRotation = top.transform.rotation;
+            targetRotation.x = 0;
+            targetRotation.z = 0;
+            top.transform.rotation = Quaternion.RotateTowards(top.transform.rotation, targetRotation, Time.deltaTime * config.rotationSpeed);
             state = TurretState.Idle;
-            top.transform.Rotate(new Vector3(0, top.transform.rotation.y, 0));
             return;
         }
         //Face Target
         top.transform.rotation = Quaternion.LookRotation(sensor.targetRef.transform.position - top.transform.position);
         //Shoot Target
-        if (Time.time > nextFireTime)
-        {
-            nextFireTime = Time.time + config.fireInteval;
-            Debug.Log("Turret Shoot");
-        }
+        Attack();
+    }
+
+    public virtual void Attack()
+    {
     }
 }

@@ -42,7 +42,7 @@ public class Node : MonoBehaviour
         {
             // can build turrent
             GameObject turrentToBuild = BuildManager.instance.GetTurretToBuild();
-            turret = Instantiate(turrentToBuild, transform.position + Vector3.up * 0.5f, Quaternion.identity) as GameObject;
+            turret = Instantiate(turrentToBuild, transform.position + Vector3.up * 0.9f, Quaternion.identity) as GameObject;
         }
     }
     #endregion

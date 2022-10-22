@@ -34,6 +34,11 @@ public class TurretSensor : MonoBehaviour
 
     public void FieldOfViewCheck()
     {
+        if (targetRef && targetRef .active == false)
+        {
+            targetRef = null;
+        }
+
         if (targetRef == null || !CheckLineOfSight(targetRef.transform))
         {
             // Check if current target is out of sight, update targetRef
