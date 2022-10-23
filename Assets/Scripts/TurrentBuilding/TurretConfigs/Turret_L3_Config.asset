@@ -10,17 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b7df662f6cda214f8a57de72f2f10e8, type: 3}
-  m_Name: Base_Turret_L1_Config
+  m_Name: Turret_L3_Config
   m_EditorClassIdentifier: 
-  attackRange: 5
-  idleRotateVector: {x: 0, y: 0.2, z: 0}
-  fireInteval: 0.5
+  attackRange: 10
+  idleRotateVector: {x: 0, y: 0.5, z: 0}
+  rotationSpeed: 100
+  fireInteval: 0.1
   targetMask:
     serializedVersion: 2
     m_Bits: 64
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 9
   cost: 0
-  damage: 5
-  muzzleSpeed: 40
+  damage: 0
+  muzzleSpeed: 0
+  projectilePrefab: {fileID: 0}
+  laserPrefab: {fileID: 1852490342792334, guid: 386174cad99783149b3e5a2f29fb3a5b,
+    type: 3}

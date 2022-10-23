@@ -24,6 +24,8 @@ public class TurretAI : MonoBehaviour
     public TurretState state = TurretState.Idle;
     public GameObject top;
     public float nextFireTime;
+
+    public GameObject nextLevel;
     
 
     public virtual void Awake()

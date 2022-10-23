@@ -16,6 +16,10 @@ public class TurretConfig : ScriptableObject
     public int cost;
     public int damage;
 
-    [Header("For projectile turret")]
+    [Header("For Projectile Turret")]
     public float muzzleSpeed;
+    public Bullet bullet;
+
+    [Header("For Laser Turret")]
+    public GameObject laserPrefab;
 }

@@ -19,7 +19,7 @@ public class ProjectileTurretAI : TurretAI
         foreach (Transform muzzle in fireControl.muzzles)
         {
             //Shoot
-            Bullet newProjectile = Instantiate(projectile, muzzle.transform.position, top.transform.rotation);
+            Bullet newProjectile = Instantiate(config.bullet, muzzle.transform.position, top.transform.rotation);
             newProjectile.SetSource(BulletSource.Player);
             newProjectile.SetDamage(config.damage);
             newProjectile.SetSpeed(config.muzzleSpeed);
