@@ -22,4 +22,10 @@ public class TurretConfig : ScriptableObject
 
     [Header("For Laser Turret")]
     public GameObject laserPrefab;
+
+    [Header("For Missile Turret")]
+    public float explosionRadius;
+    public GameObject missilePrefab;
+    public float missileFireInteval = 0.5f;
+    
 }

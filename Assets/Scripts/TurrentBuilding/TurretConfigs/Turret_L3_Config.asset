@@ -25,6 +25,9 @@ MonoBehaviour:
   cost: 0
   damage: 0
   muzzleSpeed: 0
-  projectilePrefab: {fileID: 0}
+  bullet: {fileID: 0}
   laserPrefab: {fileID: 1852490342792334, guid: 386174cad99783149b3e5a2f29fb3a5b,
     type: 3}
+  explosionRadius: 0
+  missilePrefab: {fileID: 0}
+  missileFireInteval: 0.5

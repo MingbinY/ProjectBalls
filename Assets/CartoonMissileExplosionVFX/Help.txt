@@ -1,0 +1,8 @@
+MissleVFX is the main prefab. 
+
+It includes:
+
+1. VfxManager is prefab with VfxPlay script. Here put Fire Point (Missle starts from this object). Also, input prefab of Vfx (our Missle). And object for in-game navigation.
+2. Sphere is just an object for script RotateToMouse. That script rotates our Fire Point to the mouse cursor.
+3. Missle is our Vfx with script ProjectileMove. Script has few parameters and it moves our Missle from Fire point to direction of the mouse cursor. That script also includes Hit Prefab (prefab of our explosion Boom) and Camera Shake (place here Camera what you like to shake at explosion).
+4. Boom - prefab of an explosion effect.      

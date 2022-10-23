@@ -23,7 +23,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   cost: 0
-  damage: 8
+  damage: 0
   muzzleSpeed: 60
   bullet: {fileID: -6618442002309482120, guid: 9f0c72596f294774e977b6884c71db5b, type: 3}
   laserPrefab: {fileID: 0}
+  explosionRadius: 0
+  missilePrefab: {fileID: 0}
+  missileFireInteval: 0.5
