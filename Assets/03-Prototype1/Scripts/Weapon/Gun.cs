@@ -28,10 +28,16 @@ public class Gun : MonoBehaviour
     private void Start()
     {
         bulletInMag = bulletPerMag;
+        nextShotTime = Time.time;
+        reloading = false;
+        canShoot = true;
+        
     }
 
     public IEnumerator Reload()
     {
+        reloading = true;
+        canShoot = false;
         yield return new WaitForSeconds(reloadTime);
         bulletInMag = bulletPerMag;
         canShoot=true;
@@ -52,8 +58,6 @@ public class Gun : MonoBehaviour
 
         if (bulletInMag == 0 && !reloading)
         {
-            reloading = true;
-            canShoot = false;
             StartCoroutine(Reload());
         }
     }

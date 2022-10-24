@@ -37,6 +37,11 @@ public class TurretAI : MonoBehaviour
         sensor.obstacleMask = config.obstacleMask;
         nextFireTime = Time.time;
         fireControl = top.GetComponent<TurretFireControl>();
+        sensor.angle = config.sensorAngle;
+        if (nextLevel)
+        {
+            Debug.Log(nextLevel.GetComponent<TurretAI>().config.buildCost);
+        }
     }
 
     public virtual void Update()

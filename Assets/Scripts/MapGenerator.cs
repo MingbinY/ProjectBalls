@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    public Map[] maps;
+    public List<Map> maps;
     public int mapIndex = 0;
 
     public Transform tilePrefab;
@@ -21,8 +21,11 @@ public class MapGenerator : MonoBehaviour
 
     List<Coordinate> allTileCoords;
     Queue<Coordinate> shuffledTileCoords;
+    Queue<Coordinate> openTileCoords;
 
     Map currentMap;
+
+    public Transform[,] tileMap;
 
     private void Start()
     {
@@ -32,7 +35,7 @@ public class MapGenerator : MonoBehaviour
     public void GenerateMap()
     {
         currentMap = maps[mapIndex];
-
+        tileMap = new Transform[currentMap.mapSize.x, currentMap.mapSize.y];
         GetComponent<BoxCollider>().size = new Vector3 (currentMap.mapSize.x * tileSize, .05f, currentMap.mapSize.y * tileSize);
         //Generate Coords
         allTileCoords = new List<Coordinate>();
@@ -50,7 +53,7 @@ public class MapGenerator : MonoBehaviour
 
         if (transform.Find(holderName) != null)
         {
-            DestroyImmediate(transform.Find(holderName).gameObject);
+            Destroy(transform.Find(holderName).gameObject);
         }
 
         Transform mapHolder = new GameObject (holderName).transform;
@@ -66,12 +69,13 @@ public class MapGenerator : MonoBehaviour
                 newTile.localScale = Vector3.one * (1 - outlinePercentage) * tileSize;
 
                 newTile.parent = mapHolder;
+                tileMap[x, y] = newTile;
             }
         }
 
         //Create Obstacles
         bool[,] obstacleMap = new bool[(int)currentMap.mapSize.x, (int)currentMap.mapSize.y];
-
+        List<Coordinate> allOpenCoords = new List<Coordinate>(allTileCoords);
         int currentObstacleCount = 0;
         int obstacleCount = (int)(currentMap.mapSize.x * currentMap.mapSize.y * currentMap.obstaclePercent); 
         for (int i = 0; i < obstacleCount; i++)
@@ -87,14 +91,17 @@ public class MapGenerator : MonoBehaviour
                 Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition, Quaternion.identity) as Transform;
                 newObstacle.localScale = Vector3.one * (1 - outlinePercentage) * tileSize;
                 newObstacle.parent = mapHolder;
+
+                allOpenCoords.Remove(randomCoord);
             }
             else
             {
                 obstacleMap[randomCoord.x, randomCoord.y] = false;
                 currentObstacleCount--;
             }
-            
         }
+
+        openTileCoords = new Queue<Coordinate>(Utility.ShuffleArray(allOpenCoords.ToArray(), currentMap.seed));
 
         //Create Navmesh Masks
         Transform maskLeft = Instantiate(navmeshMaskPrefab, Vector3.left * (currentMap.mapSize.x + 1), Quaternion.identity) as Transform;
@@ -126,6 +133,13 @@ public class MapGenerator : MonoBehaviour
         Coordinate randomCoord = shuffledTileCoords.Dequeue();
         shuffledTileCoords.Enqueue(randomCoord);
         return randomCoord;
+    }
+
+    public Transform GetRandomOpenTIle()
+    {
+        Coordinate randomCoord = openTileCoords.Dequeue();
+        openTileCoords.Enqueue(randomCoord);
+        return tileMap[randomCoord.x, randomCoord.y];
     }
 
     bool MapIsFullyAccessible(bool[,] obstacleMap, int currentObstacleCount)
@@ -216,5 +230,16 @@ public class MapGenerator : MonoBehaviour
                 return new Coordinate(mapSize.x/2, mapSize.y/2);
             }
         }
+    }
+
+    public void GenerateNextLevel()
+    {
+        mapIndex++;
+        if (mapIndex >= maps.Count)
+        {
+            mapIndex = 0;
+        }
+
+        GenerateMap();
     }
 }

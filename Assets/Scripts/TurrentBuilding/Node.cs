@@ -8,13 +8,15 @@ public class Node : MonoBehaviour
     public Color originalColor;
     Renderer rend;
 
-    private GameObject turret;
-
+    public GameObject turret;
+    public bool hasTurret;
+    public TurretType turretType;
 
     private void Start()
     {
         rend = GetComponent<Renderer>();
         originalColor = rend.material.color;
+        hasTurret = false;
     }
 
     #region hover effect
@@ -32,18 +34,16 @@ public class Node : MonoBehaviour
     #endregion
 
     #region Build
-    public void BuildTurret()
+    public void BuildTurret(GameObject turretToBuild)
     {
-        if (turret != null)
+        if (hasTurret)
         {
-            Debug.Log("This node has a turret");
+            hasTurret = false;
+            Destroy(turret);
         }
-        else
-        {
-            // can build turrent
-            GameObject turrentToBuild = BuildManager.instance.GetTurretToBuild();
-            turret = Instantiate(turrentToBuild, transform.position + Vector3.up * 0.9f, Quaternion.identity) as GameObject;
-        }
+        turret = Instantiate(turretToBuild, transform.position + Vector3.up * 0.9f, Quaternion.identity) as GameObject;
+        turretType = turret.GetComponent<TurretAI>().type;
+        hasTurret = true;
     }
     #endregion
 }

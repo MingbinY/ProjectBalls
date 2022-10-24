@@ -4,92 +4,101 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    MapGenerator mapGenerator;
+    public Transform playerTransform;
+
     public Wave[] waves;
-    public EnemyAI[] enemies;
-    public Transform[] spawnPoints;
+    public EnemyAI[] enemiesInCurrentWave;
 
     Wave currentWave;
     int currentWaveIndex;
 
-    int enemiesRemaining;
-    public int enemiesAlive;
+    public int enemyRemainingToSpawn;
+    public int enemyRemainingAlive;
     float nextSpawnTime;
-
-    bool loadingLevel;
 
     private void Start()
     {
+        playerTransform = FindObjectOfType<PlayerController>().transform;
         currentWaveIndex = 0;
-        loadingLevel = true;
-        LoadFirstLevel();
+        mapGenerator = FindObjectOfType<MapGenerator>();
+        NextWave(true);
     }
 
     private void Update()
     {
-        if (loadingLevel)
+        if (enemyRemainingToSpawn > 0 && Time.time > nextSpawnTime)
         {
-            return;
-        }
-        if (enemiesRemaining > 0 && Time.time >= nextSpawnTime)
-        {
-            enemiesRemaining--;
+            enemyRemainingToSpawn--;
             nextSpawnTime = Time.time + currentWave.timeBetweenSpawns;
-
-            EnemyAI enemy = Instantiate(enemies[Random.Range(0, enemies.Length)], spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
-        }
-
-        enemiesAlive = FindObjectsOfType<EnemyAI>().Length;
-        if (enemiesRemaining == 0 && enemiesAlive == 0)
-        {
-            if (!loadingLevel)
-                loadingLevel = true;
-                StartCoroutine(NextWave());
+            StartCoroutine(SpawnEnemy());
         }
     }
 
-    public void LoadFirstLevel()
+    void NextWave(bool isFirstRound)
     {
-        currentWave = waves[currentWaveIndex];
-        enemiesRemaining = currentWave.enemyCount;
-        enemies = currentWave.enemyTypesInWave;
-        spawnPoints = currentWave.spawnPoints;
-        currentWave.waveWalls.SetActive(true);
-        loadingLevel = false;
-    }
-
-    IEnumerator NextWave()
-    {
-        if (currentWaveIndex > -1)
-        {
-            currentWave.waveWalls.SetActive(false);
-        }
-
-        yield return new WaitForSeconds(2f);
-
-        if (currentWaveIndex != waves.Length - 1)
-        {
+        if (!isFirstRound)
             currentWaveIndex++;
-        }
-        else
+        if (currentWaveIndex >= waves.Length)
         {
             currentWaveIndex = 0;
         }
-        
         currentWave = waves[currentWaveIndex];
-        enemiesRemaining = currentWave.enemyCount;
-        enemies = currentWave.enemyTypesInWave;
-        spawnPoints = currentWave.spawnPoints;
-        currentWave.waveWalls.SetActive(true);
-        loadingLevel = false;
+
+        enemiesInCurrentWave = currentWave.enemyTypesInWave;
+        enemyRemainingToSpawn = currentWave.enemyCount;
+        enemyRemainingAlive = enemyRemainingToSpawn;
+    }
+
+    IEnumerator SpawnEnemy()
+    {
+        float spawnerDelay = 1;
+        float tileFlashSpeed = 4;
+        Transform randomTile = mapGenerator.GetRandomOpenTIle();
+        while (Vector3.Distance(randomTile.position, playerTransform.position) < 4)
+        {
+            // can't spawn near player
+            randomTile = mapGenerator.GetRandomOpenTIle();
+        }
+        Material tileMat = randomTile.GetComponent<Renderer>().material;
+        Color initialColor = tileMat.color;
+        Color flashColor = Color.red;
+        float spawnTimer = 0;
+
+        while (spawnTimer < spawnerDelay)
+        {
+            tileMat.color = Color.Lerp(initialColor, flashColor, Mathf.PingPong(spawnTimer * tileFlashSpeed, 1));
+            spawnTimer += Time.deltaTime;
+            yield return null;
+        }
+
+
+        EnemyAI spawnedEnemy = Instantiate(enemiesInCurrentWave[Random.Range(0, enemiesInCurrentWave.Length)], randomTile.position, Quaternion.identity);
+        spawnedEnemy.GetComponent<EnemyHealthManager>().OnDeath += OnEnemyDeath;
+    }
+
+    public void OnEnemyDeath()
+    {
+        enemyRemainingAlive--;
+        if (enemyRemainingAlive == 0)
+        {
+            StartCoroutine(NextWaveCoroutine());
+        }
+    }
+
+    public IEnumerator NextWaveCoroutine()
+    {
+        mapGenerator.GenerateNextLevel();
+        yield return new WaitForSeconds(3f);
+        NextWave(false);
     }
 
     [System.Serializable]
     public class Wave
     {
-        public Transform[] spawnPoints;
         public EnemyAI[] enemyTypesInWave;
         public int enemyCount;
         public float timeBetweenSpawns;
-        public GameObject waveWalls;
+
     }
 }

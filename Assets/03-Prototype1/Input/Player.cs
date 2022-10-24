@@ -211,6 +211,15 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c336693-c44b-46ca-8592-9a7003123eee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -312,6 +321,17 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""action"": ""BuildTurrent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99c8489d-f6cf-4111-a7ec-56509e4f5336"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -372,6 +392,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
         m_Action_PrevGun = m_Action.FindAction("PrevGun", throwIfNotFound: true);
         m_Action_SwitchTurrent = m_Action.FindAction("SwitchTurrent", throwIfNotFound: true);
         m_Action_BuildTurrent = m_Action.FindAction("BuildTurrent", throwIfNotFound: true);
+        m_Action_Reload = m_Action.FindAction("Reload", throwIfNotFound: true);
         // Look
         m_Look = asset.FindActionMap("Look", throwIfNotFound: true);
         m_Look_CameraLook = m_Look.FindAction("CameraLook", throwIfNotFound: true);
@@ -521,6 +542,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
     private readonly InputAction m_Action_PrevGun;
     private readonly InputAction m_Action_SwitchTurrent;
     private readonly InputAction m_Action_BuildTurrent;
+    private readonly InputAction m_Action_Reload;
     public struct ActionActions
     {
         private @Player m_Wrapper;
@@ -530,6 +552,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
         public InputAction @PrevGun => m_Wrapper.m_Action_PrevGun;
         public InputAction @SwitchTurrent => m_Wrapper.m_Action_SwitchTurrent;
         public InputAction @BuildTurrent => m_Wrapper.m_Action_BuildTurrent;
+        public InputAction @Reload => m_Wrapper.m_Action_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Action; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -554,6 +577,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @BuildTurrent.started -= m_Wrapper.m_ActionActionsCallbackInterface.OnBuildTurrent;
                 @BuildTurrent.performed -= m_Wrapper.m_ActionActionsCallbackInterface.OnBuildTurrent;
                 @BuildTurrent.canceled -= m_Wrapper.m_ActionActionsCallbackInterface.OnBuildTurrent;
+                @Reload.started -= m_Wrapper.m_ActionActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_ActionActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_ActionActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_ActionActionsCallbackInterface = instance;
             if (instance != null)
@@ -573,6 +599,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @BuildTurrent.started += instance.OnBuildTurrent;
                 @BuildTurrent.performed += instance.OnBuildTurrent;
                 @BuildTurrent.canceled += instance.OnBuildTurrent;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
@@ -627,6 +656,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
         void OnPrevGun(InputAction.CallbackContext context);
         void OnSwitchTurrent(InputAction.CallbackContext context);
         void OnBuildTurrent(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
     public interface ILookActions
     {

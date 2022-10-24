@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075a02310698b8c4d8b6e36ba6b94b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 2
   sensor: {fileID: 0}
   config: {fileID: 11400000, guid: 1f04dda84b4a60e4da34ad1689b31d87, type: 2}
   fireControl: {fileID: 0}

@@ -23,6 +23,7 @@ public class EnemyAI : MonoBehaviour
     private Transform playerTransform;
 
     public Gun weapon;
+    public GameObject weaponHolder;
 
     private void Start()
     {
@@ -32,6 +33,10 @@ public class EnemyAI : MonoBehaviour
         state = initState;
         playerTransform = FindObjectOfType<PlayerController>().transform;
         sensor.radius = config.viewRange;
+        Gun equipGun = Instantiate(weapon, weaponHolder.transform.position, Quaternion.identity);
+        equipGun.gameObject.transform.parent = weaponHolder.transform;
+        weapon = equipGun;
+        weapon.b_source = BulletSource.Enemy;
     }
 
     private void Update()
@@ -63,7 +68,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void ChaseUpdate()
+    public virtual void ChaseUpdate()
     {
         agent.updateRotation = true;
         if (sensor.playerInSight && PlayerInAttackRange())
@@ -76,12 +81,12 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
-        agent.stoppingDistance = 0;
+        agent.stoppingDistance = 2;
         agent.speed = config.chaseSpeed;
         agent.SetDestination(playerTransform.position);
     }
 
-    void AttackUpdate()
+    public virtual void AttackUpdate()
     {
         if (!PlayerInAttackRange() || !sensor.playerInSight)
         {
@@ -94,7 +99,7 @@ public class EnemyAI : MonoBehaviour
         Attack();
     }
 
-    void Attack()
+    public virtual void Attack()
     {
         //Place holder
         weapon.Shoot(BulletSource.Enemy);
@@ -103,7 +108,9 @@ public class EnemyAI : MonoBehaviour
     void FacePlayer()
     {
         //Face the direction of player
-        transform.LookAt(playerTransform.position);
+        Vector3 playerPos = playerTransform.position;
+        playerPos.y = transform.position.y;
+        transform.LookAt(playerPos);
     }
 
     bool PlayerInAttackRange()

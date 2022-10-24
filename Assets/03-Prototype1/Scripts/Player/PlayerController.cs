@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    GunController gunController;
     AbilityHolder abilityHolder;
     Rigidbody vfxRb;
     Rigidbody rb;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public bool jumpInput;
     public bool buildTurretInput;
+    public bool reloadInput;
     public Player inputActions;
     float numberInput;
     bool numInputPerformed;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cameraTransform = Camera.main.transform;
         abilityHolder = GetComponent<AbilityHolder>();
+        gunController = FindObjectOfType<GunController>();
         if (inputActions == null)
         {
             inputActions = new Player();
@@ -78,6 +81,7 @@ public class PlayerController : MonoBehaviour
         //HandleJump();
         HandleSwitchTurretInput();
         HandleBuildTurretInput();
+        HandleReloadInput();
     }
     private void FixedUpdate()
     {
@@ -99,6 +103,16 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(numberInput);
             numInputPerformed = false;
+        }
+    }
+
+    void HandleReloadInput()
+    {
+        inputActions.Action.Reload.performed += i => reloadInput = true;
+        if (reloadInput)
+        {
+            reloadInput = false;
+            StartCoroutine(gunController.equippedGun.Reload());
         }
     }
 }

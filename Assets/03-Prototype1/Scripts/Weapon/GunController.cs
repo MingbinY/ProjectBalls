@@ -11,7 +11,7 @@ public class GunController : MonoBehaviour
     public Transform weaponHoldTransform;
     bool shootInput;
     public Player inputActions;
-    Gun equippedGun;
+    public Gun equippedGun;
 
     public List<Gun> gunList;
     public Gun prevGun;
