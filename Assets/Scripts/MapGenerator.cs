@@ -53,7 +53,7 @@ public class MapGenerator : MonoBehaviour
 
         if (transform.Find(holderName) != null)
         {
-            Destroy(transform.Find(holderName).gameObject);
+            DestroyImmediate(transform.Find(holderName).gameObject);
         }
 
         Transform mapHolder = new GameObject (holderName).transform;
@@ -65,7 +65,7 @@ public class MapGenerator : MonoBehaviour
             for (int y = 0; y < currentMap.mapSize.y; y++)
             {
                 Vector3 tilePos = CoordToPosition(x, y);
-                Transform newTile = Instantiate(tilePrefab, tilePos, Quaternion.Euler(Vector3.right * 90));
+                Transform newTile = Instantiate(tilePrefab, tilePos, Quaternion.Euler(Vector3.right * 90));//
                 newTile.localScale = Vector3.one * (1 - outlinePercentage) * tileSize;
 
                 newTile.parent = mapHolder;
