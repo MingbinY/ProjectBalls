@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(numberInput);
             numInputPerformed = false;
+            BuildManager.instance.ChangeSelectedIndex((int)numberInput);
         }
     }
 

@@ -9,6 +9,7 @@ public class BuildManager : MonoBehaviour
     public Node selectedNode;
     public GameObject[] turretList;
     public GameObject turretSelected;
+    public int currentIndex;
 
     private void Awake()
     {
@@ -17,13 +18,12 @@ public class BuildManager : MonoBehaviour
             return;
         }
         instance = this;
-    }
-
-    
+    }  
 
     private void Start()
     {
-        turretSelected = turretList[0];
+        currentIndex = 0;
+        turretSelected = turretList[currentIndex];
     }
 
     public GameObject GetTurretToBuild()
@@ -69,6 +69,24 @@ public class BuildManager : MonoBehaviour
             if (MoneyManager.instance.currentMoney < turretToBuild.GetComponent<TurretAI>().config.buildCost)
                 return;
             selectedNode.BuildTurret(turretToBuild);
+        }
+    }
+
+    public void ChangeSelectedIndex(int indexToChange)
+    {
+        if (indexToChange > turretList.Length || indexToChange <= 0)
+            return;
+
+        indexToChange--; //input 1 should be point to index 0
+        if (indexToChange == currentIndex)
+        {
+            // If is the same index of selected turrent, change to its next level
+            turretList[currentIndex] = turretList[currentIndex].GetComponent<TurretAI>().nextLevel;
+        }
+        else
+        {
+            // if it is different index, change to that index
+            turretSelected = turretList[indexToChange];
         }
     }
 }
