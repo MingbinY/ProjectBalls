@@ -360,7 +360,8 @@ MonoBehaviour:
   state: 0
   top: {fileID: 1788666103283723475}
   nextFireTime: 0
-  nextLevel: {fileID: 0}
+  nextLevel: {fileID: 5326877602212426005, guid: 1c2c59c482286b243ae707608afa6768,
+    type: 3}
   inAttackCoroutine: 0
 --- !u!1 &3271250001154208556
 GameObject:

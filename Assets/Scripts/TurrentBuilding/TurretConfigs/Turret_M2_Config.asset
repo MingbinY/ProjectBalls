@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7df662f6cda214f8a57de72f2f10e8, type: 3}
   m_Name: Turret_M2_Config
   m_EditorClassIdentifier: 
+  turretIcon: {fileID: 21300000, guid: daa14029cbc70f0438d9f11ab5d8945d, type: 3}
+  turretName: Missile (level 2)
   sensorAngle: 30
   attackRange: 0
   targetMask:

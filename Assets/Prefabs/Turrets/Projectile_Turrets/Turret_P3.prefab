@@ -375,7 +375,8 @@ MonoBehaviour:
   state: 0
   top: {fileID: 3315798093024209913}
   nextFireTime: 0
-  nextLevel: {fileID: 0}
+  nextLevel: {fileID: 4616799956822781299, guid: 5a44e4397b26a2844a49807f2248435a,
+    type: 3}
   projectile: {fileID: -6618442002309482120, guid: 9f0c72596f294774e977b6884c71db5b,
     type: 3}
 --- !u!1 &3315798093937384645

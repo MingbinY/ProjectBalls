@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7df662f6cda214f8a57de72f2f10e8, type: 3}
   m_Name: Turret_L3_Config
   m_EditorClassIdentifier: 
+  turretIcon: {fileID: 21300000, guid: 003e7f25c1b84a84db07b1614c2c4111, type: 3}
+  turretName: Laser (level 3)
   sensorAngle: 30
   attackRange: 10
   targetMask:

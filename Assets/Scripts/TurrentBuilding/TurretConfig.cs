@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "TurretConfig")]
 public class TurretConfig : ScriptableObject
 {
+    public Sprite turretIcon;
+    public string turretName;
+
     [Header("Sensor Configs")]
     public float sensorAngle;
     public float attackRange;

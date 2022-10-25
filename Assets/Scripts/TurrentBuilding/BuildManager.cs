@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class BuildManager : MonoBehaviour
     public GameObject[] turretList;
     public GameObject turretSelected;
     public int currentIndex;
+
+    public TurretUI[] turretUI;
 
     private void Awake()
     {
@@ -24,6 +27,8 @@ public class BuildManager : MonoBehaviour
     {
         currentIndex = 0;
         turretSelected = turretList[currentIndex];
+
+        InitTurretUI();
     }
 
     public GameObject GetTurretToBuild()
@@ -82,11 +87,43 @@ public class BuildManager : MonoBehaviour
         {
             // If is the same index of selected turrent, change to its next level
             turretList[currentIndex] = turretList[currentIndex].GetComponent<TurretAI>().nextLevel;
+            turretSelected = turretList[currentIndex];
+            
         }
         else
         {
+            currentIndex = indexToChange;
             // if it is different index, change to that index
             turretSelected = turretList[indexToChange];
         }
+
+        UpdateTurretUI();
+    }
+
+    public void UpdateTurretUI()
+    {
+        TurretUI tUI = turretUI[currentIndex];
+        TurretAI tAI = turretSelected.GetComponent<TurretAI>();
+        tUI.turretIcon.sprite = tAI.config.turretIcon;
+        tUI.turretCost.text = tAI.config.buildCost.ToString();
+    }
+
+    public void InitTurretUI()
+    {
+        for (int i = 0; i < turretList.Length; i++)
+        {
+            TurretUI tUI = turretUI[i];
+            TurretAI tAI = turretList[i].GetComponent<TurretAI>();
+
+            tUI.turretIcon.sprite = tAI.config.turretIcon;
+            tUI.turretCost.text = tAI.config.buildCost.ToString();
+        }
+    }
+
+    [System.Serializable]
+    public class TurretUI
+    {
+        public Image turretIcon;
+        public Text turretCost;
     }
 }

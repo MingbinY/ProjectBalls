@@ -615,6 +615,7 @@ MonoBehaviour:
   state: 0
   top: {fileID: 1922589931663423011}
   nextFireTime: 0
-  nextLevel: {fileID: 0}
+  nextLevel: {fileID: 1395644722729866231, guid: 5d4d11f129b49b24c8fcd193afbb4277,
+    type: 3}
   laserPrefab: {fileID: 1997207017492988, guid: fd915375aaf0fc84eb9c7494badb5054,
     type: 3}

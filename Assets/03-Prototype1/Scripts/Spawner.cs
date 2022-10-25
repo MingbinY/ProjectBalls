@@ -17,16 +17,21 @@ public class Spawner : MonoBehaviour
     public int enemyRemainingAlive;
     float nextSpawnTime;
 
+    bool canSpawn = false;
+
     private void Start()
     {
         playerTransform = FindObjectOfType<PlayerController>().transform;
         currentWaveIndex = 0;
         mapGenerator = FindObjectOfType<MapGenerator>();
+        bool canSpawn = false;
         NextWave(true);
     }
 
     private void Update()
     {
+        if (!canSpawn)
+            return;
         if (enemyRemainingToSpawn > 0 && Time.time > nextSpawnTime)
         {
             enemyRemainingToSpawn--;
@@ -35,8 +40,14 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    void StartSpawning()
+    {
+        canSpawn = true;
+    }
+
     void NextWave(bool isFirstRound)
     {
+        canSpawn = false;
         if (!isFirstRound)
             currentWaveIndex++;
         if (currentWaveIndex >= waves.Length)
@@ -48,6 +59,8 @@ public class Spawner : MonoBehaviour
         enemiesInCurrentWave = currentWave.enemyTypesInWave;
         enemyRemainingToSpawn = currentWave.enemyCount;
         enemyRemainingAlive = enemyRemainingToSpawn;
+
+        Invoke("StartSpawning", 3f);
     }
 
     IEnumerator SpawnEnemy()
