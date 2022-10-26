@@ -73,6 +73,8 @@ public class BuildManager : MonoBehaviour
             // Check if has enough money to build or upgrade
             if (MoneyManager.instance.currentMoney < turretToBuild.GetComponent<TurretAI>().config.buildCost)
                 return;
+
+            MoneyManager.instance.currentMoney -= turretToBuild.GetComponent<TurretAI>().config.buildCost;
             selectedNode.BuildTurret(turretToBuild);
         }
     }
@@ -106,6 +108,24 @@ public class BuildManager : MonoBehaviour
         TurretAI tAI = turretSelected.GetComponent<TurretAI>();
         tUI.turretIcon.sprite = tAI.config.turretIcon;
         tUI.turretCost.text = tAI.config.buildCost.ToString();
+        UpdateSelectionIndicator();
+        
+    }
+
+    public void UpdateSelectionIndicator()
+    {
+        for (int i = 0; i < turretList.Length; i++)
+        {
+            TurretUI tUI = turretUI[i];
+            if (i == currentIndex)
+            {
+                tUI.selectedIndicator.enabled = true;
+            }
+            else
+            {
+                tUI.selectedIndicator.enabled = false;
+            }
+        }
     }
 
     public void InitTurretUI()
@@ -118,6 +138,8 @@ public class BuildManager : MonoBehaviour
             tUI.turretIcon.sprite = tAI.config.turretIcon;
             tUI.turretCost.text = tAI.config.buildCost.ToString();
         }
+
+        UpdateSelectionIndicator();
     }
 
     [System.Serializable]
@@ -125,5 +147,6 @@ public class BuildManager : MonoBehaviour
     {
         public Image turretIcon;
         public Text turretCost;
+        public Image selectedIndicator;
     }
 }

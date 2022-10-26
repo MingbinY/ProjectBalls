@@ -9,4 +9,8 @@ public class EnemyConfig : ScriptableObject
     public float viewRange;
     public float attackRange;
     public float attackStoppingDistance;
+
+    [Header("For Bomber")]
+    public int damage;
+    public float explosionRadius = 8f;
 }

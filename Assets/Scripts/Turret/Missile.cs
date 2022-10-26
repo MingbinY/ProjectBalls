@@ -11,7 +11,8 @@ public enum MissileStates
 public class Missile : MonoBehaviour
 {
     public Vector3 targetPos;
-
+    public AudioSource audioSource;
+    public AudioClip explosionClip;
     [SerializeField] private float force;
     [SerializeField] private float rotationForce;
     public float explosionRadius = 3f;
@@ -24,6 +25,7 @@ public class Missile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         state = MissileStates.ignition;
+        audioSource = rb.GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -70,6 +72,7 @@ public class Missile : MonoBehaviour
 
     void Explosion()
     {
+        audioSource.PlayOneShot(explosionClip);
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         if (colliders.Length > 0)
         {

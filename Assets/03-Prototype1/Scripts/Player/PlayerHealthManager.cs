@@ -9,6 +9,7 @@ public class PlayerHealthManager : BasicHealthManager
     public Image healthBar;
     public GameObject gameOverUI;
 
+
     public float lastHitTImer;
     public float timeBeforeRegenerate = 0.5f;
     public float regenMultiplier = 5;
@@ -30,6 +31,7 @@ public class PlayerHealthManager : BasicHealthManager
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
+        
         lastHitTImer = timeBeforeRegenerate;
         healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
     }
@@ -37,6 +39,7 @@ public class PlayerHealthManager : BasicHealthManager
     public override void Death()
     {
         base.Death();
+
         GetComponent<PlayerController>().GetComponent<PlayerInput>().enabled = false;
         gameOverUI.SetActive(true);
     }

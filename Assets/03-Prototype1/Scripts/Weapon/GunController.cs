@@ -99,6 +99,12 @@ public class GunController : MonoBehaviour
         UpdateGunIndex();
     }
 
+    public void AddGun(Gun gunToAdd)
+    {
+        gunList.Add(gunToAdd);
+        UpdateGunIndex();
+    }
+
     void UpdateGunIndex()
     {
         //Update current gun index

@@ -1,0 +1,263 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9013711109973497539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9013711109973199587}
+  - component: {fileID: 9013711109970299587}
+  - component: {fileID: 9013711109971298307}
+  - component: {fileID: 9013711109964113155}
+  - component: {fileID: 9013711109971298306}
+  - component: {fileID: 6033254905448114060}
+  - component: {fileID: -2295111052377118095}
+  m_Layer: 0
+  m_Name: WeaponsCrate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9013711109973199587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013711109973497539}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &9013711109970299587
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013711109973497539}
+  m_Mesh: {fileID: 4300000, guid: d58dcd672271444489bcac4fc060c2e6, type: 3}
+--- !u!23 &9013711109971298307
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013711109973497539}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 4d53bbe4026061b4fac733c1dd3d5a11, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &9013711109964113155
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013711109973497539}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: d58dcd672271444489bcac4fc060c2e6, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9013711109971298306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013711109973497539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846f2f6fc8cb9f449a89beb3fa1ae4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunList:
+  - {fileID: 2862811363853569048, guid: bd240a8dfe399c9438be44a93b38ba39, type: 3}
+  - {fileID: 2636924005855951102, guid: 27282f408ed1fcc4d89235fbecac5cf4, type: 3}
+  - {fileID: 2233717959543563786, guid: 280a48e7867c61446888f40673eaba1f, type: 3}
+  - {fileID: 4278107070567140535, guid: a68c32bb98b91d94ead5d5be2ade0275, type: 3}
+  - {fileID: 2056668887300355802, guid: bedbb7d8c82527b46b5f1bbd83ba3259, type: 3}
+  gunToObtain: {fileID: 0}
+--- !u!65 &6033254905448114060
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013711109973497539}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0.000000029802322, y: 0.24070995, z: 0.000000074505806}
+--- !u!114 &-2295111052377118095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013711109973497539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8057c976b872b494aba079f605e2e5b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas_tag_name: Canvas
+  camera_tag_name: MainCamera
+  multiCam: 0
+  distCalTargetTag: MainCamera
+  enableStandardTracking: 1
+  enableCenteredTracking: 0
+  showBoundaryBox: 0
+  boundaryBoxColor: {r: 1, g: 1, b: 0.4, a: 1}
+  parentSize: {x: 150, y: 150}
+  displayRangeMin: 0
+  displayRangeMax: 500
+  raycastTarget: 0
+  enableSprite: 1
+  spriteDepth: 0
+  offScreenSpriteRotates: 1
+  onScreenSprite: {fileID: 21300000, guid: a4dcf346b9620b84c9c30893bfa2125e, type: 3}
+  onScreenSpriteColor: {r: 1, g: 1, b: 1, a: 1}
+  onScreenSpriteSize: 0.1
+  onScreenSpriteOffset: {x: 0, y: 0}
+  onScreenSpriteRotation: 0
+  onScreenSpriteFadeWithRange: 0
+  onScreenSpriteScaleWithRange: 0
+  reverseOnScreenSpriteScaleWithRange: 0
+  onScreenSpriteHide: 0
+  offScreenSprite: {fileID: 21300000, guid: a88223c9956b71e4ca6f3158015e4efc, type: 3}
+  offScreenSpriteColor: {r: 1, g: 1, b: 1, a: 1}
+  offScreenSpriteSize: 0.2
+  offScreenSpriteOffset: {x: 0, y: 0}
+  offScreenSpriteRotation: 0
+  offScreenSpriteFadeWithRange: 0
+  offScreenScaleWithRange: 0
+  reverseOffScreenSpriteScaleWithRange: 0
+  offScreenSpriteHide: 0
+  enableGameObject: 0
+  gameObjectDepth: 0
+  offScreenObjectRotates: 0
+  onScreenGameObject: {fileID: 0}
+  onScreenGameObjectColor: {r: 1, g: 1, b: 1, a: 1}
+  onScreenGameObjectSize: 1
+  onScreenGameObjectOffset: {x: 0, y: 0}
+  onScreenGameObjectRotation: 0
+  onScreenGameObjectFadeWithRange: 0
+  onScreenGameObjectScaleWithRange: 0
+  reverseOnScreenGameObjectScaleWithRange: 0
+  onScreenGameObjectHide: 0
+  offScreenGameObject: {fileID: 0}
+  offScreenGameObjectColor: {r: 1, g: 1, b: 1, a: 1}
+  offScreenGameObjectSize: 1
+  offScreenGameObjectOffset: {x: 0, y: 0}
+  offScreenGameObjectRotation: 0
+  offScreenGameObjectFadeWithRange: 0
+  offScreenGameObjectScaleWithRange: 0
+  reverseOffScreenGameObjectScaleWithRange: 0
+  offScreenGameObjectHide: 0
+  enableText: 0
+  textDepth: 0
+  textDescription: Hello!
+  distIncrement: m
+  textFont: {fileID: 0}
+  textSize: 40
+  textColor: {r: 0, g: 0, b: 0, a: 1}
+  textAlign: 1
+  textLineSpacing: 20
+  edgeDetectOffset: {x: 0, y: 0}
+  onScreenSpriteHideDesc: 0
+  onScreenSpriteHideDist: 0
+  onScreenTextOffset: {x: 0, y: 0}
+  offScreenSpriteHideDesc: 0
+  offScreenSpriteHideDist: 0
+  offScreenTextOffset: {x: 0, y: 0}
+  showDiameter: 0
+  diameterColor: {r: 0, g: 0, b: 0, a: 1}
+  diameterSize: 50
+  onScreenCenteredRangeMin: 0
+  onScreenCenteredRangeMax: 50
+  raycastTargetCentered: 0
+  enableCenteredSprite: 0
+  onScreenCenteredSpriteDepth: 0
+  onScreenCenteredSprite: {fileID: 0}
+  onScreenCenteredSpriteColor: {r: 1, g: 1, b: 1, a: 1}
+  onScreenCenteredSpriteSize: 1
+  onScreenCenteredSpriteRotation: 0
+  onScreenSpriteCenteredFadeWithRange: 0
+  onScreenSpriteCenteredScaleWithRange: 0
+  onScreenSpriteCenteredScaleReverse: 0
+  hideOnScreenCenteredSprite: 0
+  hideOffScreenCenteredSprite: 0
+  enableCenteredPrefab: 0
+  onScreenCenteredPrefabDepth: 0
+  onScreenCenteredPrefab: {fileID: 0}
+  onScreenCenteredPrefabColor: {r: 1, g: 1, b: 1, a: 1}
+  onScreenCenteredPrefabSize: 1
+  onScreenCenteredPrefabRotation: 0
+  onScreenPrefabCenteredFadeWithRange: 0
+  onScreenPrefabCenteredScaleWithRange: 0
+  onScreenPrefabCenteredScaleReverse: 0
+  hideOnScreenCenteredPrefab: 0
+  hideOffScreenCenteredPrefab: 0
+  enableRadiusGizmo: 0
+  radiusGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  radiusGizmoSize: 50
+  toggleSetupOptions: 1
+  toggleParentOptions: 0
+  toggleSpriteOptions: 1
+  toggleGameObjectOptions: 0
+  toggleTextOptions: 0
+  toggleDiameterOptions: 0
+  toggleCenteredSpriteOptions: 0
+  toggleCenteredPrefabOptions: 0
+  toggleRadiusGizmoOptions: 0

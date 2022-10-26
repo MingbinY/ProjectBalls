@@ -14,11 +14,13 @@ public class Bullet : MonoBehaviour
     public int damage = 10;
 
     public BulletSource b_source;
+    public AudioSource audioSource;
 
     private void Start()
     {
         GetComponent<Collider>().isTrigger = true;
         Destroy(gameObject, 10f);
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void SetSpeed(float newSpeed)
@@ -57,7 +59,7 @@ public class Bullet : MonoBehaviour
             PlayerHealthManager phm = other.GetComponent<PlayerHealthManager>();
             if (phm != null)
             {
-                phm.TakeDamage(damage/2);
+                phm.TakeDamage(damage/5);
             }
         }
 

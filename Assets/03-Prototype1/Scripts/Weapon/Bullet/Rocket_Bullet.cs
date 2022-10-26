@@ -6,12 +6,14 @@ public class Rocket_Bullet : Bullet
 {
     public float explosionRadius = 5f;
     public GameObject explosionVFX;
+    public AudioClip explosionSound;
 
     public override void OnTriggerEnter(Collider other)
     {
         Debug.Log("Rocket Trigger");
         //Explosion VFX
         Instantiate(explosionVFX, transform.position, Quaternion.identity);
+        audioSource.PlayOneShot(explosionSound);
         Collider[] cols = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider col in cols)
         {

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip shootSFX;
+    public AudioClip boltClip;
     public BulletSource b_source;
 
     public string gunName;
@@ -31,11 +34,12 @@ public class Gun : MonoBehaviour
         nextShotTime = Time.time;
         reloading = false;
         canShoot = true;
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     public IEnumerator Reload()
     {
+        
         reloading = true;
         canShoot = false;
         yield return new WaitForSeconds(reloadTime);
@@ -54,11 +58,25 @@ public class Gun : MonoBehaviour
             newProjectile.SetSource(bs);
             newProjectile.SetDamage(damage);
             newProjectile.SetSpeed(muzzleVelocity);
+            StartCoroutine(gunSfxSequence());
         }
 
         if (bulletInMag == 0 && !reloading)
         {
             StartCoroutine(Reload());
+        }
+    }
+
+    IEnumerator gunSfxSequence()
+    {
+        audioSource.PlayOneShot(shootSFX);
+        if (boltClip != null)
+        {
+            while (audioSource.isPlaying && bulletInMag > 0)
+            {
+                yield return null;
+            }
+            audioSource.PlayOneShot(boltClip);
         }
     }
 

@@ -25,7 +25,7 @@ MonoBehaviour:
   idleRotateVector: {x: 0, y: 0.2, z: 0}
   rotationSpeed: 100
   fireInteval: 0.5
-  buildCost: 0
+  buildCost: 5
   damage: 0
   muzzleSpeed: 40
   bullet: {fileID: -6618442002309482120, guid: 9f0c72596f294774e977b6884c71db5b, type: 3}

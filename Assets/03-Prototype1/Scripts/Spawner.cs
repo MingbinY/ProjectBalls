@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public WeaponCrate weaponCrate;
     MapGenerator mapGenerator;
     public Transform playerTransform;
 
@@ -24,7 +25,7 @@ public class Spawner : MonoBehaviour
         playerTransform = FindObjectOfType<PlayerController>().transform;
         currentWaveIndex = 0;
         mapGenerator = FindObjectOfType<MapGenerator>();
-        bool canSpawn = false;
+        canSpawn = false;
         NextWave(true);
     }
 
@@ -102,8 +103,15 @@ public class Spawner : MonoBehaviour
     public IEnumerator NextWaveCoroutine()
     {
         mapGenerator.GenerateNextLevel();
+        DropWeaponCrate();
         yield return new WaitForSeconds(3f);
         NextWave(false);
+    }
+
+    public void DropWeaponCrate()
+    {
+        WeaponCrate newCrate = Instantiate(weaponCrate, mapGenerator.GetRandomOpenTIle().position, Quaternion.identity);
+        Destroy(newCrate, 60f);
     }
 
     [System.Serializable]
@@ -112,6 +120,5 @@ public class Spawner : MonoBehaviour
         public EnemyAI[] enemyTypesInWave;
         public int enemyCount;
         public float timeBetweenSpawns;
-
     }
 }

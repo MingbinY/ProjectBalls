@@ -33,10 +33,13 @@ public class EnemyAI : MonoBehaviour
         state = initState;
         playerTransform = FindObjectOfType<PlayerController>().transform;
         sensor.radius = config.viewRange;
-        Gun equipGun = Instantiate(weapon, weaponHolder.transform.position, Quaternion.identity);
-        equipGun.gameObject.transform.parent = weaponHolder.transform;
-        weapon = equipGun;
-        weapon.b_source = BulletSource.Enemy;
+        if (weapon)
+        {
+            Gun equipGun = Instantiate(weapon, weaponHolder.transform.position, Quaternion.identity);
+            equipGun.gameObject.transform.parent = weaponHolder.transform;
+            weapon = equipGun;
+            weapon.b_source = BulletSource.Enemy;
+        }
     }
 
     private void Update()

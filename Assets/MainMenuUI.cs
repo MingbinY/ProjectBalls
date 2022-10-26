@@ -18,6 +18,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnGameRestart()
     {
+        MoneyManager.instance.OnSceneReload();
         SceneManager.LoadScene(1);
     }
 }
