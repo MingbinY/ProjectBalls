@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   shootSFX: {fileID: 8300000, guid: 7c2745365d26f5a4fa2030cf26887f72, type: 3}
+  boltClip: {fileID: 0}
   b_source: 0
   gunName: Rifle
   gunSprite: {fileID: 21300046, guid: 5acb27b603af6d44ea6113c4b7b15385, type: 3}
@@ -232,7 +233,7 @@ MonoBehaviour:
   bullet: {fileID: -6618442002309482120, guid: 9f0c72596f294774e977b6884c71db5b, type: 3}
   msBetweenShots: 100
   muzzleVelocity: 40
-  damage: 5
+  damage: 15
   nextShotTime: 0
 --- !u!82 &-2507430600629303788
 AudioSource:

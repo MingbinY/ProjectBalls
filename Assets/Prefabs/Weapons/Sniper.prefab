@@ -62,7 +62,7 @@ MonoBehaviour:
   bullet: {fileID: -6618442002309482120, guid: 9f0c72596f294774e977b6884c71db5b, type: 3}
   msBetweenShots: 2500
   muzzleVelocity: 40
-  damage: 100
+  damage: 200
   nextShotTime: 0
 --- !u!82 &6488837902720181102
 AudioSource:

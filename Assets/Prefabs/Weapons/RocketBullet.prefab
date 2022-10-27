@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  damage: 30
+  damage: 50
   b_source: 0
   audioSource: {fileID: 0}
   explosionRadius: 6

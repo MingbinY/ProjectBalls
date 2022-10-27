@@ -6,14 +6,9 @@ public class DeathCollider : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<CollectionController>())
+        if (other.GetComponent<BasicHealthManager>() != null)
         {
-            Destroy(other.gameObject);
-            FindObjectOfType<CollectionSpawner>().SpawnRandomPickup();
-        }
-        else if (other.GetComponent<PlayerController>())
-        {
-            other.transform.position = Vector3.zero;
+            other.GetComponent<BasicHealthManager>().TakeDamage(10000000);
         }
     }
 }

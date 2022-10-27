@@ -363,10 +363,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0464a8763d8e82c44a7467cf3b724f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  takeHitClip: {fileID: 0}
+  deathClip: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
   isDead: 0
-  moneyDrop: 10
+  moneyDrop: 2
 --- !u!195 &4072494036405501562
 NavMeshAgent:
   m_ObjectHideFlags: 0

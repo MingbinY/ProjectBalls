@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Spawner : MonoBehaviour
 {
     public WeaponCrate weaponCrate;
     MapGenerator mapGenerator;
     public Transform playerTransform;
+    public TMP_Text waveStartEndText;
+    public TMP_Text enemyRemainText;
 
     public Wave[] waves;
     public EnemyAI[] enemiesInCurrentWave;
@@ -17,6 +20,7 @@ public class Spawner : MonoBehaviour
     public int enemyRemainingToSpawn;
     public int enemyRemainingAlive;
     float nextSpawnTime;
+    public int enemySpawnCounter = 0;
 
     bool canSpawn = false;
 
@@ -43,11 +47,15 @@ public class Spawner : MonoBehaviour
 
     void StartSpawning()
     {
+        waveStartEndText.enabled = false;
+        enemyRemainText.text = enemyRemainingAlive.ToString();
         canSpawn = true;
     }
 
     void NextWave(bool isFirstRound)
     {
+        enemySpawnCounter = 0;
+        waveStartEndText.text =  "WAVE" + " " + currentWaveIndex + 1;
         canSpawn = false;
         if (!isFirstRound)
             currentWaveIndex++;
@@ -60,7 +68,7 @@ public class Spawner : MonoBehaviour
         enemiesInCurrentWave = currentWave.enemyTypesInWave;
         enemyRemainingToSpawn = currentWave.enemyCount;
         enemyRemainingAlive = enemyRemainingToSpawn;
-
+        Debug.Log("enemyRemainingToSpawn: "+enemyRemainingToSpawn);
         Invoke("StartSpawning", 3f);
     }
 
@@ -89,19 +97,25 @@ public class Spawner : MonoBehaviour
 
         EnemyAI spawnedEnemy = Instantiate(enemiesInCurrentWave[Random.Range(0, enemiesInCurrentWave.Length)], randomTile.position, Quaternion.identity);
         spawnedEnemy.GetComponent<EnemyHealthManager>().OnDeath += OnEnemyDeath;
+        enemySpawnCounter++;
+        Debug.Log("SpawnerCounter" + enemySpawnCounter);
     }
 
     public void OnEnemyDeath()
     {
         enemyRemainingAlive--;
+        enemyRemainText.text = enemyRemainingAlive.ToString();
         if (enemyRemainingAlive == 0)
         {
+            canSpawn = false;
             StartCoroutine(NextWaveCoroutine());
         }
     }
 
     public IEnumerator NextWaveCoroutine()
     {
+        waveStartEndText.text = "WAVE CLEARED \n GRAB YOUR REWARD";
+        waveStartEndText.enabled = true;
         mapGenerator.GenerateNextLevel();
         DropWeaponCrate();
         yield return new WaitForSeconds(3f);

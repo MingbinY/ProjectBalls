@@ -224,7 +224,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   isDead: 0
-  moneyDrop: 10
+  moneyDrop: 2
 --- !u!195 &3300794874055164671
 NavMeshAgent:
   m_ObjectHideFlags: 0

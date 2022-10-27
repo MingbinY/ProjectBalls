@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   shootSFX: {fileID: 0}
+  boltClip: {fileID: 0}
   b_source: 0
   gunName: RPG
   gunSprite: {fileID: 21300032, guid: 5acb27b603af6d44ea6113c4b7b15385, type: 3}
@@ -147,7 +148,7 @@ MonoBehaviour:
   bullet: {fileID: 1002573608533591149, guid: 92f5dbc642d8714469a2dfbbe37a3aba, type: 3}
   msBetweenShots: 100
   muzzleVelocity: 40
-  damage: 20
+  damage: 50
   nextShotTime: 0
   rocketInMuzzle: {fileID: 5441392865675229967}
 --- !u!82 &-7133458692394009738
